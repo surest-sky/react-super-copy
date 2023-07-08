@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "<%= EXTENSION_NAME %>",
+    "description": "全新万能复制: 支持破解超百家常用站点网站复制，更全新的体验",
+    "icons": {
+        "48": "copy-inactive-48.png",
+        "128": "copy-inactive-128.png"
+    },
+    "background": { "service_worker": "background.bundle.js" },
+    "action": {
+        "default_title": "全新万能复制",
+        "default_popup": "popup.html",
+        "default_icon": "copy-inactive-32.png"
+    },
+    "permissions": ["contextMenus", "storage"],
+    "host_permissions": ["http://*/*", "https://*/*"],
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*", "<all_urls>"],
+            "js": ["contentScript.bundle.js"]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": ["web.html", "content.styles.css"],
+            "matches": ["https://*/*", "http://*/*"]
+        }
+    ]
+}
